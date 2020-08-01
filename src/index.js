@@ -1,16 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Card from './Card';
+import CardList from './CardList';
 import * as serviceWorker from './serviceWorker';
 import 'tachyons';
 import { robots } from './robots';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Card id={robots[0].id} name={robots[0].name} email={robots[0].email}/>
-    <Card id={robots[0].id} name={robots[0].name} email={robots[0].email} />
-    <Card id={robots[0].id} name={robots[0].name} email={robots[0].email}/>
+    <CardList robots = { robots }/>
   </React.StrictMode>,
   document.getElementById('root')
 );
