@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SearcBox from "../components/SearchBox";
 import Cardlist from "../components/CardList";
 import Scroll from "../components/Scroll";
+import ErrorBoundry from "../components/ErrorBoundry";
 import "./App.css";
 
 class App extends Component {
@@ -28,13 +29,15 @@ class App extends Component {
         .includes(this.state.searchfield.toLowerCase());
     });
     return !this.state.robots.length ? (
-      <h1> loading </h1>
+      <h1 className="tc"> loading </h1>
     ) : (
       <div className="tc">
         <h1 className="f1"> RoboFriends </h1>
         <SearcBox searchChange={this.onSearchChange} />
         <Scroll>
-          <Cardlist robots={filteredRobots} />
+          <ErrorBoundry>
+            <Cardlist robots={filteredRobots} />
+          </ErrorBoundry>
         </Scroll>
       </div>
     );
