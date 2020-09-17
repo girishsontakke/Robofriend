@@ -6,10 +6,12 @@ import "tachyons";
 
 //redux
 import { Provider } from "react-redux";
-import { createStore } from "redux";
-import { searchRobots } from "./reducers";
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import { searchRobots, requestRobots } from "./reducers";
+import thunkMiddleware from "redux-thunk";
 
-const store = createStore(searchRobots);
+const rootReducers = combineReducers({ searchRobots, requestRobots });
+const store = createStore(rootReducers, applyMiddleware(thunkMiddleware));
 
 ReactDOM.render(
   <React.StrictMode>
