@@ -15,5 +15,7 @@ export const requestRobots = () => (dispatch) => {
   fetch("https://jsonplaceholder.typicode.com/users")
     .then((responses) => responses.json())
     .then((data) => dispatch({ type: REQUEST_ROBOTS_SUCCESS, payload: data }))
-    .then((error) => dispatch({ type: REQUEST_ROBOTS_FAILED, payload: error }));
+    .catch((error) =>
+      dispatch({ type: REQUEST_ROBOTS_FAILED, payload: error })
+    );
 };
