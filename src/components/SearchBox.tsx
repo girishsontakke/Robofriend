@@ -1,6 +1,10 @@
 import React from "react";
 
-const SearcBox = (props) => {
+interface Props {
+  searchChange: (event: React.FormEvent<HTMLInputElement>) => void;
+}
+
+const SearcBox: React.FC<Props> = (props) => {
   return (
     <input
       onChange={props.searchChange}

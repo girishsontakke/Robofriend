@@ -7,15 +7,34 @@ import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { requestRobots, setSearchField } from "../action";
 
-const App = (props) => {
-  const searchField = useSelector((state) => state.searchRobots.searchField);
-  const robots = useSelector((state) => state.requestRobots.robots);
-  const isPending = useSelector((state) => state.requestRobots.isPending);
+type Robots = {
+  name: string;
+};
+
+interface State {
+  searchRobots: {
+    searchField: string;
+  };
+  requestRobots: {
+    isPending: boolean;
+    robots: Robots[];
+    error: string;
+  };
+}
+
+const App: React.FC<{}> = (props) => {
+  const searchField = useSelector(
+    (state: State) => state.searchRobots.searchField
+  );
+  const robots = useSelector((state: State) => state.requestRobots.robots);
+  const isPending = useSelector(
+    (state: State) => state.requestRobots.isPending
+  );
   const dispatch = useDispatch();
 
   const onRequestRobots = () => dispatch(requestRobots());
-  const onSearchChange = (event) =>
-    dispatch(setSearchField(event.target.value));
+  const onSearchChange = (event: React.FormEvent<HTMLInputElement>) =>
+    dispatch(setSearchField(event.currentTarget.value));
 
   const filteredRobots = robots.filter((robot) => {
     return robot.name.toLowerCase().includes(searchField.toLowerCase());

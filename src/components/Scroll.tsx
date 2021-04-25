@@ -1,7 +1,7 @@
 import React from "react";
 import "./Scroll.css";
 
-const Scroll = (props) => {
+const Scroll: React.FC<React.PropsWithChildren<{}>> = (props) => {
   return (
     <div
       className="scroll"

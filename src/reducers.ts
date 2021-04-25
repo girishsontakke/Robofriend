@@ -9,7 +9,15 @@ const initialStateSearch = {
   searchField: "",
 };
 
-export const searchRobots = (state = initialStateSearch, action = {}) => {
+interface actionType {
+  type?: string;
+  payload?: any;
+}
+
+export const searchRobots = (
+  state = initialStateSearch,
+  action: actionType = {}
+) => {
   switch (action.type) {
     case CHANGE_SEARCH_FIELD:
       return Object.assign({}, state, { searchField: action.payload });
@@ -24,7 +32,10 @@ const initialStateRobots = {
   error: "",
 };
 
-export const requestRobots = (state = initialStateRobots, action = {}) => {
+export const requestRobots = (
+  state = initialStateRobots,
+  action: actionType = {}
+) => {
   switch (action.type) {
     case REQUEST_ROBOTS_PENDING:
       return { ...state, isPending: true };

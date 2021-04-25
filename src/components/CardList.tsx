@@ -1,7 +1,11 @@
 import React from "react";
 import Card from "./Card";
 
-const CardList = ({ robots }) => {
+interface Props {
+  robots: any[];
+}
+
+const CardList: React.FC<Props> = ({ robots }) => {
   return (
     <div style={{ margin: "0 auto", width: "80%" }}>
       {robots.map((user, i) => {
